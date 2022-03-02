@@ -72,7 +72,6 @@ public class Launcher
         s.AppendLine("start without flags will start both servers");
         s.AppendLine(string.Empty);
         s.AppendLine("-h    opens this help page");
-        s.AppendLine("Das ist ein test");
 
         Console.WriteLine(s);
 
