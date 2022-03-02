@@ -1,22 +1,17 @@
-﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{F30F5A31-416B-4C7B-9903-9476F5E64A9A}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Kraken_Testserver/Server.cs">
+﻿<Properties StartupConfiguration="{F30F5A31-416B-4C7B-9903-9476F5E64A9A}|Default" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Kraken_Testserver/Launcher.cs">
     <Files>
-      <File FileName="Kraken_Testserver/Server.cs" Line="29" Column="40" />
+      <File FileName="Kraken_Testserver/Server.cs" Line="7" Column="28" />
+      <File FileName="Kraken_Testserver/Launcher.cs" Line="78" Column="46" />
       <File FileName="Kraken_Testserver/SocketServer.cs" Line="48" Column="28" NotebookId="1" />
-      <File FileName="Kraken_Testserver/TCPServer.cs" Line="45" Column="7" NotebookId="1" />
-      <File FileName="Kraken_Testserver/Launcher.cs" Line="12" Column="2" NotebookId="1" />
+      <File FileName="Kraken_Testserver/TCPServer.cs" Line="33" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Kraken_Testserver" expanded="True">
             <Node name="Kraken_Testserver" expanded="True">
-              <Node name="Server.cs" selected="True" />
+              <Node name="Launcher.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -26,6 +21,11 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Kraken__Testserver PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
