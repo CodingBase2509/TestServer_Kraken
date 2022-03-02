@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/fabian/Projects/C#-Projects/Kraken_Testserver/Kraken_Testserver/Kraken_Testserver.csproj",
+      "projectUniqueName": "/Users/fabian/Projects/C#/Kraken_Testserver/Kraken_Testserver/Kraken_Testserver.csproj",
       "projectName": "Kraken_Testserver",
-      "projectPath": "/Users/fabian/Projects/C#-Projects/Kraken_Testserver/Kraken_Testserver/Kraken_Testserver.csproj",
+      "projectPath": "/Users/fabian/Projects/C#/Kraken_Testserver/Kraken_Testserver/Kraken_Testserver.csproj",
       "packagesPath": "/Users/fabian/.nuget/packages/",
-      "outputPath": "/Users/fabian/Projects/C#-Projects/Kraken_Testserver/Kraken_Testserver/obj/",
+      "outputPath": "/Users/fabian/Projects/C#/Kraken_Testserver/Kraken_Testserver/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/fabian/.nuget/NuGet/NuGet.Config"

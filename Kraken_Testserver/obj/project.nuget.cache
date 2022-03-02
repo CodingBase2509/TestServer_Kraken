@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jNi3H/iy3BxWmKvGnVL+vLKaXdJ9Rs+FfPswJoUgaZ4YQiisF7LGDqzNcLXGWOvhPoPpToieh/4XKVt+MT1cSA==",
+  "dgSpecHash": "uiVzsmC5ap36W5ljOyGigOsuPWf8QKoyqTra1o/SuCscXqOsxuYCzrw2tH96jQdulkG7622h8N4/bgxoRwu0Uw==",
   "success": true,
-  "projectFilePath": "/Users/fabian/Projects/C#-Projects/Kraken_Testserver/Kraken_Testserver/Kraken_Testserver.csproj",
+  "projectFilePath": "/Users/fabian/Projects/C#/Kraken_Testserver/Kraken_Testserver/Kraken_Testserver.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
