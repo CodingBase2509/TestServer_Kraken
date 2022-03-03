@@ -25,17 +25,11 @@ namespace Kraken_Testserver
 			Console.WriteLine($"TCPListener listens on Port {Port}");
 			Client = Listener.AcceptTcpClient();
 
-			//sr = new StreamReader(Client.GetStream());
-			//sw = new StreamWriter(Client.GetStream());
-
-				
-			//sw.AutoFlush = true;
-
 			if (Client.Connected)
 			{ 
 				ns = Client.GetStream();
 				Console.WriteLine("TCPClient connects to the Server");
-				ReceiveMessage();
+				await ReceiveMessage();
 			}
 		}
 
@@ -47,11 +41,13 @@ namespace Kraken_Testserver
 			//ns.Seek(0, SeekOrigin.Begin);
 			try
 			{
-				int bytes = 0;
 				Console.WriteLine("Receiving Messages: ");
+
+				var firstByteReceived = await AwaitDataReceive(ns);
+
 				if (ns.DataAvailable && ns.CanRead)
-				{ 
-					Server.ReadBytes(ns, ref tempBuff, 0);
+				{
+					ReadBytes(ns, ref tempBuff, firstByteReceived);
 					
 					if(!Equals(tempBuff.Length, 0))
 						Data = Encoding.UTF8.GetString(tempBuff, 0, tempBuff.Length);
@@ -85,7 +81,7 @@ namespace Kraken_Testserver
 			try
 			{
 				var tempBuff = Encoding.UTF8.GetBytes(msg);
-				ns.Write(tempBuff, 0, tempBuff.Length);
+				await ns.WriteAsync(tempBuff, 0, tempBuff.Length);
 				tempBuff = null!;
 				//sw.WriteLine("Server responce: " + msg);
 

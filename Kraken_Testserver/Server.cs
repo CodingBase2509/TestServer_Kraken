@@ -34,19 +34,32 @@ namespace Kraken_Testserver
 
 		public abstract Task SendMessage(string msg);
 
-		public static void ReadBytes(NetworkStream ns,ref byte[] buffer, int offset)
+		public static void ReadBytes(NetworkStream ns,ref byte[] buffer, byte? firstbyte)
         {
-			int index = offset;
 			int tempByte;
-			byte[] tempBuff = new byte[] {} ;
+			List<byte> tempBuff = new List<byte>();
+
+			if (!Equals(firstbyte, null))
+				tempBuff.Add((byte)firstbyte);
 
 			while(!Equals(tempByte = ns.ReadByte(), null))
             {
-				tempBuff[index] = (byte)tempByte;
-				index++;
+				tempBuff.Add((byte)tempByte);
             }
-			buffer = tempBuff;
+
+			buffer = tempBuff.ToArray();
         }
+
+		public static async Task<byte> AwaitDataReceive(NetworkStream ns)
+        {
+			int b;
+			// waits for reicive a Byte
+			do {} while ((b = ns.ReadByte()) == -1);
+
+			await new Task<bool>( () => { return true; } );
+
+			return (byte)b;
+		}
 
 		// Shutdown Functions
 
