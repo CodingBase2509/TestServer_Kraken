@@ -1,20 +1,24 @@
-﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{F30F5A31-416B-4C7B-9903-9476F5E64A9A}|Default">
+﻿<Properties StartupConfiguration="{F30F5A31-416B-4C7B-9903-9476F5E64A9A}|Default" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/fabian/Projects/C#/Kraken_Testserver/Kraken_Testserver/Server.cs" relfile="Kraken_Testserver/Server.cs" line="67" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Kraken_Testserver/TCPServer.cs">
     <Files>
       <File FileName="Kraken_Testserver/Launcher.cs" Line="17" Column="31" />
       <File FileName="Kraken_Testserver/Server.cs" Line="50" Column="24" />
       <File FileName="Kraken_Testserver/SocketServer.cs" Line="51" Column="35" NotebookId="1" />
-      <File FileName="Kraken_Testserver/TCPServer.cs" Line="33" Column="5" NotebookId="1" />
+      <File FileName="Kraken_Testserver/TCPServer.cs" Line="10" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Kraken_Testserver" expanded="True">
-            <Node name="Kraken_Testserver" expanded="True">
-              <Node name="TCPServer.cs" selected="True" />
-            </Node>
+            <Node name="Kraken_Testserver" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -26,10 +30,4 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Kraken__Testserver PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/fabian/Projects/C#/Kraken_Testserver/Kraken_Testserver/Server.cs" relfile="Kraken_Testserver/Server.cs" line="67" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
