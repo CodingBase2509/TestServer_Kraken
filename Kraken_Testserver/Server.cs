@@ -30,9 +30,23 @@ namespace Kraken_Testserver
 
 		// Data Transfer Methods
 
-		public abstract void ReceiveMessage();
+		public abstract Task ReceiveMessage();
 
-		public abstract void SendMessage(string msg);
+		public abstract Task SendMessage(string msg);
+
+		public static void ReadBytes(NetworkStream ns,ref byte[] buffer, int offset)
+        {
+			int index = offset;
+			int tempByte;
+			byte[] tempBuff = new byte[] {} ;
+
+			while(!Equals(tempByte = ns.ReadByte(), null))
+            {
+				tempBuff[index] = (byte)tempByte;
+				index++;
+            }
+			buffer = tempBuff;
+        }
 
 		// Shutdown Functions
 

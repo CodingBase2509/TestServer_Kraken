@@ -10,6 +10,16 @@ public class Launcher
 
     public static void Main(string[] args)
     {
+        while (true)
+        {
+            SetupServer<TCPServer>(server1!);
+            Console.WriteLine("Restart Server");
+            Console.WriteLine();
+        }
+    }
+
+    private static void func(string[] args)
+    {
         do
         {
             if (args.Length == 0)
@@ -43,7 +53,7 @@ public class Launcher
         server1 = new SocketServer(4444);
 
         server1!.SetupListener();
-        server2.SetupListener();
+        server2!.SetupListener();
     }
 
     public static void SetupServer<T>(Server server) where T: Server
@@ -54,8 +64,8 @@ public class Launcher
             server = new TCPServer(3333);
         else if (t == typeof(SocketServer))
             server = new SocketServer(4444);
-        else
-            return;
+
+        server!.SetupListener();
     }
 
     public static void Help()

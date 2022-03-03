@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 namespace Kraken_Testserver
 {
@@ -10,17 +11,11 @@ namespace Kraken_Testserver
 	{
 		TcpClient Client;
 
-		StreamReader sr;
-		StreamWriter sw;
+		NetworkStream ns;
 
 		public TCPServer(int port)
 			: base(port)
-		{
-			Client = new TcpClient();
-			sr = new StreamReader(Client.GetStream());
-			sw = new StreamWriter(Client.GetStream());
-			sw.AutoFlush = true;
-		}
+		{ }
 
 		// Setup
 
@@ -28,11 +23,17 @@ namespace Kraken_Testserver
 		{
 			Listener.Start();
 			Console.WriteLine($"TCPListener listens on Port {Port}");
-			Client = await Listener.AcceptTcpClientAsync();
-			Console.WriteLine("1");
+			Client = Listener.AcceptTcpClient();
 
-			while (Client.Connected)
-			{
+			//sr = new StreamReader(Client.GetStream());
+			//sw = new StreamWriter(Client.GetStream());
+
+				
+			//sw.AutoFlush = true;
+
+			if (Client.Connected)
+			{ 
+				ns = Client.GetStream();
 				Console.WriteLine("TCPClient connects to the Server");
 				ReceiveMessage();
 			}
@@ -40,30 +41,54 @@ namespace Kraken_Testserver
 
 		// Connection-Using Functions
 
-		public override void ReceiveMessage()
+		public override async Task ReceiveMessage()
 		{
+			byte[] tempBuff = new byte[] {};
+			//ns.Seek(0, SeekOrigin.Begin);
 			try
 			{
-				Console.WriteLine("Receiving Message: ");
-				while ((Data = sr.ReadLine()) != null)
-				{
-					Console.WriteLine(Data);
-					SendMessage(Data);
+				int bytes = 0;
+				Console.WriteLine("Receiving Messages: ");
+				if (ns.DataAvailable && ns.CanRead)
+				{ 
+					Server.ReadBytes(ns, ref tempBuff, 0);
+					
+					if(!Equals(tempBuff.Length, 0))
+						Data = Encoding.UTF8.GetString(tempBuff, 0, tempBuff.Length);
 				}
+
+				if (Equals(tempBuff.Length, 0))
+				{
+					ReceiveMessage();
+					return;
+				}
+				
+				tempBuff = null!;
+
+				Console.WriteLine(Data);
+				await SendMessage(Data);
+
+				ReceiveMessage();
+				return;
+
 			}catch(Exception e)
             {
 				Console.WriteLine(e.Message);
 				Console.WriteLine(e.StackTrace);
 				Console.WriteLine("An error occured, initiate shutdownhook");
-				Shutdown(this, Client);
+			    Shutdown(this, Client);
 			}
         }
 
-		public override void SendMessage(string msg)
+		public override async Task SendMessage(string msg)
 		{
 			try
 			{
-				sw.WriteLine("Server responce: " + msg);
+				var tempBuff = Encoding.UTF8.GetBytes(msg);
+				ns.Write(tempBuff, 0, tempBuff.Length);
+				tempBuff = null!;
+				//sw.WriteLine("Server responce: " + msg);
+
 			}catch(Exception e)
             {
 				Console.WriteLine(e.Message);

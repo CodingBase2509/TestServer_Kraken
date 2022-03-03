@@ -23,16 +23,15 @@ namespace Kraken_Testserver
 			Socket.Listen();
 			Console.WriteLine($"Socket listens on Port {Port}");
 			//Socket = await Listener.AcceptSocketAsync();
-			Console.WriteLine("2");
 
 			while (Socket.Connected)
 			{ 
 				Console.WriteLine("Socket connects to the Server");
-				ReceiveMessage();
+				await ReceiveMessage();
 			}
 		}
 
-        public override void ReceiveMessage()
+        public override async Task ReceiveMessage()
         {
 			try
 			{
@@ -49,7 +48,7 @@ namespace Kraken_Testserver
             }
 		}
 
-        public override void SendMessage(string msg)
+        public override async Task SendMessage(string msg)
         {
 			try
 			{
