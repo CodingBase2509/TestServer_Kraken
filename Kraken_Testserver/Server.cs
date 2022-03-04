@@ -36,27 +36,36 @@ namespace Kraken_Testserver
 
 		public static void ReadBytes(NetworkStream ns,ref byte[] buffer, byte? firstbyte)
         {
-			int tempByte;
-			List<byte> tempBuff = new List<byte>();
+			try
+			{
+				int tempByte;
+				List<byte> tempBuffer = new List<byte>();
 
-			if (!Equals(firstbyte, null))
-				tempBuff.Add((byte)firstbyte);
+				if (!Equals(firstbyte, null))
+				{
+					tempBuffer.Add((byte)firstbyte);
+				}
 
-			while(!Equals(tempByte = ns.ReadByte(), null))
+				while (ns.DataAvailable)
+				{
+					tempByte = ns.ReadByte();
+					tempBuffer.Add((byte)tempByte);
+				}
+
+				buffer = tempBuffer.ToArray();
+			}catch(Exception e)
             {
-				tempBuff.Add((byte)tempByte);
-            }
-
-			buffer = tempBuff.ToArray();
+				Console.WriteLine(e.Message);
+				Console.WriteLine(e.StackTrace);
+				Console.WriteLine("An error occured, initiate shutdownhook");
+			}
         }
 
 		public static async Task<byte> AwaitDataReceive(NetworkStream ns)
         {
 			int b;
 			// waits for reicive a Byte
-			do {} while ((b = ns.ReadByte()) == -1);
-
-			await new Task<bool>( () => { return true; } );
+			while ((b = ns.ReadByte()) == -1) { }
 
 			return (byte)b;
 		}
